@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thala for a reason</title>
+</head> 
+<style>
+    body{
+        background-color: rgb(97, 169, 169);
+        color: rgb(0, 0, 0);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+
+
+    }
+    input{
+        padding: 10px;
+        color: rgb(187, 5, 5);
+        outline: 0px;
+        border: 0px;
+    }
+    input::placeholder{
+        color: rgb(0, 0, 0);
+    }
+    button{
+        padding: 10px;
+    }
+    video{
+        height: 50%;
+        width: 30%;
+    }
+    @media screen and (max-width : 500px) {
+        #credit{
+            left: 20% !important;
+        }
+    }
+</style>
+<body>
+    <h1>Everthing is there for a reason</h1>
+    <input type="text" placeholder="Enter some text" id = "input">
+    <button id = "submit">Check text</button>
+    <p id = "thala_display"></p>
+    <p style="position: absolute; bottom: 0; left: 40%;" id = "credit">This website is made by Admya Salar</p>
+    <video src="video.mp4" id = "thala_video" hidden></video>
+<script>
+    let submit = document.getElementById("submit");
+    submit.addEventListener("click",()=>{
+        let input = document.getElementById("input").value;
+        console.log();
+        let thala_display = document.getElementById("thala_display");
+        let thala_video = document.getElementById("thala_video");
+        if (input == "7") {
+            thala_display.innerHTML = `7 = 7 = Thala For a reason...`
+            thala_video.hidden = false;
+             thala_video.play()
+        }
+        else if (input == "07") {
+            thala_display.innerHTML = `07 = 0 + 7 = Thala For a reason...`
+            thala_video.hidden = false;
+             thala_video.play()
+        }
+        else if (Number.isInteger(Number.parseInt(input)) == false) {
+            if (input.length == 7) {
+                console.log("thala for a reason")
+                input = Array.from(input)
+                thala_video.hidden = false;
+                thala_video.play()
+                thala_display.innerHTML = `${input.join("")} = ${input[0]} + ${input[1]} + ${input[2]} + ${input[3]} + ${input[3]} + ${input[4]} + ${input[5]} + ${input[6]} = Thala For a reason...`
+            }
+            else{
+                console.log("no thala for you")
+                thala_display.innerHTML = "No thala for you"
+            }
+        } else {
+            input = Array.from(input)
+            console.log(input)
+            let is_thala = 0;
+            input.reduce((a,b)=>{
+                is_thala = is_thala + Number.parseInt(b) + Number.parseInt(a) ;
+                if (is_thala == 7) {
+                    thala_video.hidden = false;
+                    thala_video.play()
+                    thala_display.innerHTML = `${input.join('')} = ${Number.parseInt(a)} + ${Number.parseInt(b)} = Thala for a reason `
+                } else {
+                    thala_display.innerHTML = `NO thala for you`
+                }
+               
+            })
+            
+            
+        }
+    })
+</script>
+</body>
+
+</html>
