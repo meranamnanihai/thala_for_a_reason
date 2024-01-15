@@ -34,6 +34,10 @@
         #credit{
             left: 20% !important;
         }
+        video{
+            height: 80%;
+            width: 90%;
+        }
     }
 </style>
 <body>
@@ -76,14 +80,19 @@
             input = Array.from(input)
             console.log(input)
             let is_thala = 0;
+            if (input.length == 1) {
+                thala_display.innerHTML = "No thala for you"
+            }
             input.reduce((a,b)=>{
                 is_thala = is_thala + Number.parseInt(b) + Number.parseInt(a) ;
+                console.log(is_thala)
                 if (is_thala == 7) {
                     thala_video.hidden = false;
                     thala_video.play()
                     thala_display.innerHTML = `${input.join('')} = ${Number.parseInt(a)} + ${Number.parseInt(b)} = Thala for a reason `
                 } else {
-                    thala_display.innerHTML = `NO thala for you`
+                    
+                    thala_display.innerHTML = "No thala for you"
                 }
                
             })
